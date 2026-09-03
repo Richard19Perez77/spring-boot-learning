@@ -1,39 +1,72 @@
 package com.rick.webservice.rick;
 
- import jakarta.persistence.*;
- import java.util.Date;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
- @Entity
- @Table(name = "user_request_logs")
- public class UserRequestLog {
-    
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
+import java.util.Date;
 
-     @Temporal(TemporalType.TIMESTAMP)
-     private Date timestamp = new Date();
+@Entity
+@Table(name = "user_request_logs")
+public class UserRequestLog {
 
-     private String method;
-     private String url;
-     private String ipAddress;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-     @Column(columnDefinition = "jsonb")
-     private String headers;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timestamp = new Date();
 
-     @Column(columnDefinition = "jsonb")
-     private String requestBody;
+    private String method;
+    private String url;
+    private String ipAddress;
 
-     // Constructors
-     public UserRequestLog() {}
+    @Column(columnDefinition = "TEXT")
+    private String headers;
 
-     public UserRequestLog(String method, String url, String ipAddress, String headers, String requestBody) {
-         this.method = method;
-         this.url = url;
-         this.ipAddress = ipAddress;
-         this.headers = headers;
-         this.requestBody = requestBody;
-     }
+    @Column(columnDefinition = "TEXT")
+    private String requestBody;
 
-    // add  Getters and Setters
- }
+    public UserRequestLog() {}
+
+    public UserRequestLog(String method, String url, String ipAddress, String headers, String requestBody) {
+        this.method = method;
+        this.url = url;
+        this.ipAddress = ipAddress;
+        this.headers = headers;
+        this.requestBody = requestBody;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public String getHeaders() {
+        return headers;
+    }
+
+    public String getRequestBody() {
+        return requestBody;
+    }
+}

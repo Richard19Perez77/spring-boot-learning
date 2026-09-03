@@ -91,6 +91,9 @@ out/
 .DS_Store
 Thumbs.db
 
+# Android Studio leftover if this folder is opened as an Android project
+local.properties
+
 # Spring Boot Properties (Optional)
 # Uncomment if you don't want to commit sensitive configs
 # src/main/resources/application.properties
